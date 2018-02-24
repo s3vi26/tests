@@ -31,3 +31,27 @@ function assert (expected, actual, message) {
 
 console.log(assert(6, add(4, 2), "working"))
 console.log(assert(12 === sub(15,2), "13"))
+
+module.exports = {
+    assert: function(expected, actual, message = "Test"){
+        if (expected === actual) {
+            console.log("good"+message)
+        }else {
+            diff = util.inspect(expected) + "\n   " + util.inspect(actual);
+            conole.log("poop"+message+"\n   Assertion failed no match\n   "+diff);
+        }
+    },
+    
+
+
+    assert_true: function(actual,message) {
+        assert(true, actual, message)
+    },
+    assert_false: function(actual, message) {
+        this.assert(false, actual, message)
+    }
+
+}
+
+
+
